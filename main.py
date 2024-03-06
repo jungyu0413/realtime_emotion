@@ -40,8 +40,8 @@ if __name__ == "__main__":
         if check:
             _, pred_val, pred_aro, _, _ = model(output_image)
             
-            valence =  np.clip(np.round((pred_val.item()), 2), -1, 1)
-            arousal = np.clip(np.round((pred_aro.item()), 2), -1, 1) 
+            valence =  np.clip(np.round((pred_val.item())-0.5, 2), -1, 1)
+            arousal = np.clip(np.round((pred_aro.item())-0., 2), -1, 1) 
             map_val = int(valence * (new_length/2))
             map_aro = int(arousal * (new_length/2))
             
